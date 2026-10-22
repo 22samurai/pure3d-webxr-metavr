@@ -1,4 +1,10 @@
-# Godot XR Template
+# pure3d-webxr-metavr
+
+An experiment in viewing a PURE3D edition on Meta Quest 3 with Godot. The current Quest build is a native Godot/OpenXR APK; the WebXR export is exploratory and has not been tested with this edition.
+
+This project is based on the [Godot XR Template](https://github.com/GodotVR/godot-xr-template).
+
+## Upstream Godot XR Template
 
 ![GitHub forks](https://img.shields.io/github/forks/godotvr/godot-xr-template?style=plastic)
 ![GitHub Repo stars](https://img.shields.io/github/stars/godotvr/godot-xr-template?style=plastic)
