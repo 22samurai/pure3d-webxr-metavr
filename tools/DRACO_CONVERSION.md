@@ -10,7 +10,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\Convert-DracoGlbForGodot.ps1 `
   -OutputDirectory 'C:\path\to\decoded-assets'
 ```
 
-Converted files end in `_godot.glb`; originals are preserved. The command checks that Draco is absent in each output and that scene, node, mesh, primitive, material, texture, and image counts match. `conversion-manifest.json` records source and output SHA-256 hashes. To replace existing outputs, add `-Overwrite`.
+Converted files end in `_godot.glb`; originals are preserved. The command checks that Draco is absent and that scene, node, mesh, primitive, material, and image counts match. glTF Transform may merge duplicate texture entries; the command reports that change as a warning for visual review. `conversion-manifest.json` records source and output SHA-256 hashes and structure counts. To replace existing outputs, add `-Overwrite`.
 
 To import into Godot, copy a converted `_godot.glb` into the project's `assets/` directory, reopen or focus the editor, and drag the imported scene from the FileSystem dock into a 3D scene. Importing the model does not import annotations or articles from `scene.svx.json`.
 

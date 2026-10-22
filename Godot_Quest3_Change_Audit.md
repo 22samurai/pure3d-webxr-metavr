@@ -52,3 +52,9 @@ SHA-256 of the code and configuration files at the time of this record:
 | `tools/draco-converter/package-lock.json` | `B31B0FE9319D163AFDED4E7123430FC7CF233CDC2263D0B35CBF55445E3D9FC2` |
 | `.gitignore` | `1321756588EEF00E43DC8536676A18D504D895F8A8DF95594CF3E23DF3733E81` |
 
+### Converter correction on 2026-10-22
+
+Testing a real PURE3D GLB, `CodiceCospi.glb`, showed that glTF Transform merged duplicate texture entries from 10 to 6 while keeping six image entries and the five materials. The original count check rejected that output. `tools/Convert-DracoGlbForGodot.ps1` now permits a reduction in texture-entry count, warns that visual review is needed, and still requires scene, node, mesh, primitive, material, and image counts to match. `tools/DRACO_CONVERSION.md` documents the check. The source model was not modified.
+
+The revised command decoded `CodiceCospi.glb` without Draco. Godot 4.7.2 imported and instantiated its output in a PC scratch project. Appearance, Quest rendering, and annotation alignment remain to be checked. SHA-256 of the revised `tools/Convert-DracoGlbForGodot.ps1`: `82625E23BDC28988DDB664F3B943D2C965B28F1E924D413C6D24245A8A4F95F0`.
+

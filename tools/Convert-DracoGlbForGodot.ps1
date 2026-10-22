@@ -100,6 +100,15 @@ foreach ($input in $inputs) {
         throw "Draco compression remains in converted file: $output"
     }
     foreach ($key in $beforeStructure.Keys) {
+        if ($key -eq 'textures') {
+            if ($afterStructure[$key] -gt $beforeStructure[$key]) {
+                throw "Texture count increased for $($input.Name): $($beforeStructure[$key]) to $($afterStructure[$key])"
+            }
+            if ($afterStructure[$key] -lt $beforeStructure[$key]) {
+                Write-Warning "Texture entries were merged for $($input.Name): $($beforeStructure[$key]) to $($afterStructure[$key]). Check visual fidelity in Godot."
+            }
+            continue
+        }
         if ($beforeStructure[$key] -ne $afterStructure[$key]) {
             throw "Scene structure changed ($key) for $($input.Name): $($beforeStructure[$key]) to $($afterStructure[$key])"
         }
