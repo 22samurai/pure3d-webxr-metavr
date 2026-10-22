@@ -14,10 +14,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Godot XR Template"
+config/name="PUREQuest Cospi XR TEST"
+config/description="An experiment to take a PURE3D Edition and run native WebXR on the Quest.  Adds hand manipulation (grab edition and rotate) for the Cospi Codex Edition."
 run/main_scene="res://game/main.tscn"
 config/features=PackedStringArray("4.7")
-config/icon="res://icon.png"
+config/icon="uid://yjls4qcxkeyf"
 
 [autoload]
 

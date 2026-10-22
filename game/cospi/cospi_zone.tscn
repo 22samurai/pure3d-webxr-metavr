@@ -3,23 +3,64 @@
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_pdh8f"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_0brim"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_0ufjm"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_0ufjm"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_i1ian"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_k4cv3"]
 [ext_resource type="Environment" uid="uid://er867l7dl10j" path="res://default_env.tres" id="5_r2nap"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="6_i1ian"]
 [ext_resource type="PackedScene" uid="uid://b4w2rhi4838f0" path="res://assets/cospi/CodiceCospi_godot.glb" id="6_pdh8f"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_k4cv3"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="10_x6laq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nup64"]
+size = Vector3(8.005, 0.2, 8.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nup64"]
+metallic = 0.26
+clearcoat_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nup64"]
+size = Vector3(8.005, 0.195, 8.005)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcngy"]
+size = Vector3(4.3584766, 0.305, 0.345)
 
 [node name="CospiZone" unique_id=1227779809 instance=ExtResource("1_pdh8f")]
+
+[node name="LeftHand" parent="XROrigin3D" index="1"]
+pose = &"grip"
 
 [node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" unique_id=706804484 instance=ExtResource("2_0brim")]
 
 [node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="1" unique_id=2001703028 instance=ExtResource("3_0ufjm")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0.02, -0.03535534, -0.10606602)
 show_laser = 2
 laser_length = 1
+
+[node name="MovementDirect" parent="XROrigin3D/LeftHand" index="2" unique_id=1350238042 instance=ExtResource("4_0ufjm")]
+max_speed = 1.54
+strafe = true
+
+[node name="FunctionPickup" parent="XROrigin3D/LeftHand" index="3" unique_id=1685256860 instance=ExtResource("5_k4cv3")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="RightHand" parent="XROrigin3D" index="2"]
+pose = &"grip"
 
 [node name="RightHand" parent="XROrigin3D/RightHand" index="0" unique_id=243536198 instance=ExtResource("4_i1ian")]
 
 [node name="FunctionPointer" parent="XROrigin3D/RightHand" index="1" unique_id=1115098715 instance=ExtResource("3_0ufjm")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -0.02, -0.03535534, -0.10606602)
 show_laser = 2
 laser_length = 1
+
+[node name="MovementTurn" parent="XROrigin3D/RightHand" index="2" unique_id=382569103 instance=ExtResource("6_i1ian")]
+turn_mode = 2
+
+[node name="FunctionPickup" parent="XROrigin3D/RightHand" index="3" unique_id=36304651 instance=ExtResource("5_k4cv3")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="PlayerBody" parent="XROrigin3D" index="3" unique_id=982102212 instance=ExtResource("7_k4cv3")]
 
 [node name="World" type="Node3D" parent="." index="1" unique_id=481109505]
 
@@ -30,11 +71,31 @@ environment = ExtResource("5_r2nap")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 omni_range = 12.0
 
-[node name="InspectionPivot" type="Node3D" parent="World" index="2" unique_id=104614256]
+[node name="Ground" type="StaticBody3D" parent="World" index="2" unique_id=2123541520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59, -2.55)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground" index="0" unique_id=572628662]
+transform = Transform3D(1, 0, 0, 0, 0.9991034, -0.042335875, 0, 0.042335875, 0.9991034, 0.0034151077, -0.7255935, -1.0385602)
+mesh = SubResource("BoxMesh_nup64")
+surface_material_override/0 = SubResource("StandardMaterial3D_nup64")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground" index="1" unique_id=1175895021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.60256433)
+shape = SubResource("BoxShape3D_nup64")
+
+[node name="CodexPickable" parent="World" index="3" unique_id=1102737775 instance=ExtResource("10_x6laq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1.5)
+freeze = true
+freeze_mode = 0
 
-[node name="EditionContent" type="Node3D" parent="World/InspectionPivot" index="0" unique_id=41135560]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+[node name="CollisionShape3D" parent="World/CodexPickable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25988936, -0.7251595, -0.68213177)
+shape = SubResource("BoxShape3D_jcngy")
 
-[node name="CodiceCospi_godot" parent="World/InspectionPivot/EditionContent" index="0" unique_id=1829264117 instance=ExtResource("6_pdh8f")]
-transform = Transform3D(1, 0, 0, 0, 0.9782892, 0.20724441, 0, -0.20724441, 0.9782892, 0, 0, 0.4714477)
+[node name="EditionContent" type="Node3D" parent="World/CodexPickable" index="1" unique_id=41135560]
+transform = Transform3D(0.665, 0, 0, 0, 0.665, 0, 0, 0, 0.665, 0, 0, 0)
+
+[node name="CodiceCospi_godot" parent="World/CodexPickable/EditionContent" index="0" unique_id=1829264117 instance=ExtResource("6_pdh8f")]
+transform = Transform3D(1.8600001, 0, 0, 0, 0.96108663, -1.5924549, 0, 1.5924549, 0.96108663, -0.40146112, -1.0892786, -1.0464561)
+
+[editable path="World/CodexPickable"]
