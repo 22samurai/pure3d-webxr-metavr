@@ -68,3 +68,7 @@ The revised command decoded `CodiceCospi.glb` without Draco. Godot 4.7.2 importe
 
 `export_presets.cfg` changed the Quest APK output filename from `Test-run1.apk` to `Test-run2.apk`. The generated Android Gradle memory adjustment and successful export are recorded in the operations history, rather than this source-change audit.
 
+## Quest deployment script added by Codex on 2026-10-22
+
+`deploy_quest.bat` locates Android SDK Platform-Tools, checks for one authorized device, and installs the Android Quest APK with `adb install -r`. It accepts an alternate APK path as its first argument. Its missing-APK path was exercised; the connected Quest was detected with `adb devices`. The script has not yet been used to install the APK.
+

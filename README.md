@@ -21,6 +21,8 @@ The working Quest build is a native Godot/OpenXR Android APK. `export_presets.cf
 
 Open the project with Godot 4.7.2, install the matching Android export and build templates, and choose the **Android Quest** export preset. The generated `android/build/gradle.properties` file is ignored by Git. For the current asset set on a 16 GB development PC, set `org.gradle.jvmargs=-Xmx6g -XX:MaxMetaspaceSize=1g` and `org.gradle.workers.max=2` in that file before exporting. Reapply those settings if the Android build template is regenerated. The exported APK belongs in a GitHub Release rather than in the source tree.
 
+To install the exported APK over USB on Windows, connect and unlock the Quest, accept its USB debugging prompt, then run `deploy_quest.bat` from this folder. The script uses `build/android-quest/Test-run2.apk` by default. You can pass a different APK path as its first argument. The Quest appears under **Unknown Sources** after installation; it does not need to appear as a Windows drive.
+
 
 ## Versions
 
