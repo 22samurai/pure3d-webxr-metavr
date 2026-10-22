@@ -2,3 +2,5 @@
 .godot/
 android/
 build/
+node_modules/
+tools/draco-converter/.npm-cache/

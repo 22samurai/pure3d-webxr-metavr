@@ -1,0 +1,9 @@
+{
+  "name": "pure3d-godot-draco-converter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Pinned glTF Transform CLI for decoding Draco GLBs before Godot import",
+  "devDependencies": {
+    "@gltf-transform/cli": "4.5.1"
+  }
+}

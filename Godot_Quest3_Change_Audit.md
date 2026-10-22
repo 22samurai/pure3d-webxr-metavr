@@ -32,3 +32,23 @@ SHA-256 of the source files at the time of this record:
 | `game/zones/zone_base.tscn` | `6BAD66725C8F0D56BC48D7D5C257E10E32EB774D2AE8DD92B81BB4BFA3A0E1A6` |
 | `game/zones/desktop_input.gd` | `3B18D0AD65424FAC1FAD033A0AC6BE1F9AB4C68E1CB7CC4D653EEC4D38CD548A` |
 
+## Conversion program added by Codex on 2026-10-22
+
+| Exact file | Role and change | Reason |
+| --- | --- | --- |
+| `tools/Convert-DracoGlbForGodot.ps1` | New repeatable command that decodes one GLB or a directory of GLBs, checks that Draco is absent and basic scene counts match, and writes SHA-256 hashes to a manifest. | Make Draco-compressed Voyager/Pure3D models importable by Godot without changing the originals. |
+| `tools/draco-converter/package.json` | Declares the local glTF Transform CLI dependency at version 4.5.1. | Keep the converter version explicit. |
+| `tools/draco-converter/package-lock.json` | Locks the npm dependency graph used by `npm ci`. | Make future installations reproducible. |
+| `.gitignore` | Excludes the installed `node_modules/` tree and converter npm cache. | Keep downloaded build dependencies out of source control. |
+
+The Smithsonian Space Shuttle Discovery sample was converted in six detail levels. Every output passed the script's Draco and scene-count checks. Godot 4.7.2 then imported and instantiated all six decoded GLBs in a scratch project. The preview and low-detail outputs also imported inside this XR project. This confirms import compatibility on the PC; it does not validate Quest rendering, annotations, or scholarly edition metadata.
+
+SHA-256 of the code and configuration files at the time of this record:
+
+| File | SHA-256 |
+| --- | --- |
+| `tools/Convert-DracoGlbForGodot.ps1` | `6AF67111E0909A62BF0A4CEAAACACF99314701D00609B26C5F292AB0EA85C0EC` |
+| `tools/draco-converter/package.json` | `78E5C7B10BB5AE1EB53920A9F6B7559B43F6AF341DA746CB555118E7F962AEF1` |
+| `tools/draco-converter/package-lock.json` | `B31B0FE9319D163AFDED4E7123430FC7CF233CDC2263D0B35CBF55445E3D9FC2` |
+| `.gitignore` | `1321756588EEF00E43DC8536676A18D504D895F8A8DF95594CF3E23DF3733E81` |
+
