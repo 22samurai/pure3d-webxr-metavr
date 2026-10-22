@@ -58,3 +58,13 @@ Testing a real PURE3D GLB, `CodiceCospi.glb`, showed that glTF Transform merged 
 
 The revised command decoded `CodiceCospi.glb` without Draco. Godot 4.7.2 imported and instantiated its output in a PC scratch project. Appearance, Quest rendering, and annotation alignment remain to be checked. SHA-256 of the revised `tools/Convert-DracoGlbForGodot.ps1`: `82625E23BDC28988DDB664F3B943D2C965B28F1E924D413C6D24245A8A4F95F0`.
 
+## Cospi scene changes prepared by the project owner on 2026-10-22
+
+| Exact file | Role and change | Verification |
+| --- | --- | --- |
+| `game/cospi/cospi_zone.tscn` | New scene inheriting the XR staging base; includes both demo hand scenes and pointers, procedural sky environment, lighting, an inspection pivot, and the decoded Cospi model. | Godot 4.7.2 exported the Android Quest debug APK successfully. Headset appearance and interaction have not yet been tested. |
+| `game/main.tscn` | Main staging scene now starts the Cospi scene instead of the original menu scene. | The exported APK contains the Cospi scene and model; the original menu scene remains in the project. |
+| `addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres` and `addons/godot-xr-tools/hands/animations/right/hand_blend_tree.tres` | Godot editor reserialized the existing hand animation connections while the owner set up the scene. | The connection pairs are unchanged; no hand behavior change is intended. |
+
+`export_presets.cfg` changed the Quest APK output filename from `Test-run1.apk` to `Test-run2.apk`. The generated Android Gradle memory adjustment and successful export are recorded in the operations history, rather than this source-change audit.
+

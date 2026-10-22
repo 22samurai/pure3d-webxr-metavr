@@ -6,7 +6,7 @@
 
 [node name="MainStaging" unique_id=572504068 instance=ExtResource("1")]
 script = ExtResource("2_dmefr")
-main_scene = "res://game/start_scene/start_scene.tscn"
+main_scene = "uid://bn64vavh5rh2f"
 prompt_for_continue = false
 
 [node name="LoadingScreen" parent="." index="2"]

@@ -7,6 +7,14 @@
 
 This repository contains a template Godot project for building a simple VR game.
 
+## Codex Cospi inspection prototype
+
+This checkout is an experiment in viewing a PURE3D edition on Meta Quest 3. The current startup scene, `game/cospi/cospi_zone.tscn`, shows a decoded Codex Cospi model against a procedural sky with the template's tracked hands and pointers. The original demo scenes remain in the project. Model grabbing, SVX annotations, articles, and guided tours are not implemented yet.
+
+The working Quest build is a native Godot/OpenXR Android APK. `export_presets.cfg` also contains a WebXR preset, but that path has not yet been tested with this edition. The decoded model and its textures are in `assets/cospi/`; see `assets/cospi/ATTRIBUTION.md` for source and rights information. `tools/DRACO_CONVERSION.md` explains how to recreate a Godot-compatible model from a Draco-compressed GLB.
+
+Open the project with Godot 4.7.2, install the matching Android export and build templates, and choose the **Android Quest** export preset. The generated `android/build/gradle.properties` file is ignored by Git. For the current asset set on a 16 GB development PC, set `org.gradle.jvmargs=-Xmx6g -XX:MaxMetaspaceSize=1g` and `org.gradle.workers.max=2` in that file before exporting. Reapply those settings if the Android build template is regenerated. The exported APK belongs in a GitHub Release rather than in the source tree.
+
 
 ## Versions
 
