@@ -4,7 +4,7 @@ An experiment to use Godot's OpenXR tools to create a native PURE3D experience t
 
 v0.3 presents the Codex Cospi, supports walking around the floor-plane (don't fall off!) and interacting with editions via grab-and-drop functionality. Resolution is surprisingly high and interaction with objects in this manner is extremely natural.
 
-[Watch the v0.3 Quest recording](media/purequest-cospi-v0.3.mp4)
+[POC recording](media/purequest-cospi-v0.3.mp4)
 
 [![Codex Cospi on Quest with tracked hands, captured at 20 seconds](media/purequest-cospi-v0.3-20s.png)](media/purequest-cospi-v0.3.mp4)
 
@@ -14,9 +14,7 @@ AI Disclosure: Chat GPT Sol used for configuration and removing the .glb file's 
 
 ## Technical notes
 
-The decoded Codex Cospi model and textures are in [`assets/cospi/`](assets/cospi/). See [`assets/cospi/ATTRIBUTION.md`](assets/cospi/ATTRIBUTION.md) for source and rights information. [`tools/DRACO_CONVERSION.md`](tools/DRACO_CONVERSION.md) explains the Draco conversion. The original XR demo scenes remain available.
-
-## Install v0.3 on a Quest
+The decoded Codex Cospi model and textures are in [`assets/cospi/`](assets/cospi/). See [`assets/cospi/ATTRIBUTION.md`](assets/cospi/ATTRIBUTION.md) for source and rights information. [`tools/DRACO_CONVERSION.md`](tools/DRACO_CONVERSION.md) explains the Draco conversion. 
 
 1. Download [PUREQuest-Cospi-v0.3.0.apk](https://github.com/22samurai/pure3d-webxr-metavr/releases/download/v0.3.0/PUREQuest-Cospi-v0.3.0.apk) from the [v0.3 release](https://github.com/22samurai/pure3d-webxr-metavr/releases/tag/v0.3.0).
 2. Set up a [Meta developer account and Developer Mode](https://developers.meta.com/vr/documentation/native/android/mobile-device-setup/) for your headset. Install [Android SDK Platform-Tools](https://developer.android.com/tools/releases/platform-tools) on your computer and add its `platform-tools` folder to your PATH (or run the commands from that folder). Windows users also need the [Meta Quest ADB driver](https://developers.meta.com/vr/documentation/native/android/mobile-device-setup/).
@@ -29,7 +27,7 @@ The decoded Codex Cospi model and textures are in [`assets/cospi/`](assets/cospi
 
 5. On the headset, open **Library → Unknown Sources** and launch **PUREQuest Cospi TEST**. If `adb devices` shows `unauthorized`, accept the debugging prompt inside the headset and run it again.
 
-If you have a checkout of this repository on Windows, `deploy_quest.bat "C:\path\to\PUREQuest-Cospi-v0.3.0.apk"` performs the device check and installation. The download is a sideloaded prototype APK; the headset app uses native OpenXR.
+If you have a checkout of this repository on Windows, `deploy_quest.bat "C:\path\to\PUREQuest-Cospi-v0.3.0.apk"`will copy the APK to the Quest. 
 
 ## Build from source
 
